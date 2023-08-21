@@ -21,13 +21,20 @@ import { mainListItems, secondaryListItems } from './listItems';
 import Chart from './Chart';
 import Deposits from './Deposits';
 import Orders from './Orders';
+import DashboardMain from './DashboardMain'
+import UserManage from './UserManage'
+import ClassManage from './ClassManage'
+import Report from './Reports'
+import 'recharts';
+
+
 
 function Copyright(props: any) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
       <Link color="inherit" href="https://mui.com/">
-        Your Website
+        Withub admin dashboard
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -85,13 +92,34 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
+
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
 export default function Dashboard() {
   const [open, setOpen] = React.useState(true);
+  const [selectedItem, setSelectedItem] = React.useState('Main');
   const toggleDrawer = () => {
     setOpen(!open);
+  };
+  const handleItemClick = (item: string) => {
+    setSelectedItem(item)
+    console.log(item)
+  }
+  const renderSelectedComponent = () => {
+    switch (selectedItem) {
+      case 'Main':
+        return <DashboardMain/>;
+      case 'User':
+        return <UserManage/>;
+      case 'Report':
+        return <Report/>
+      case 'Class':
+        return <ClassManage/>
+      // 添加其他情况
+      default:
+        return null;
+    }
   };
 
   return (
@@ -123,7 +151,7 @@ export default function Dashboard() {
               noWrap
               sx={{ flexGrow: 1 }}
             >
-              Dashboard
+              Withub管理
             </Typography>
             <IconButton color="inherit">
               <Badge badgeContent={4} color="secondary">
@@ -147,9 +175,9 @@ export default function Dashboard() {
           </Toolbar>
           <Divider />
           <List component="nav">
-            {mainListItems}
+            {mainListItems(handleItemClick)}
             <Divider sx={{ my: 1 }} />
-            {secondaryListItems}
+            {/* {secondaryListItems} */}
           </List>
         </Drawer>
         <Box
@@ -166,40 +194,7 @@ export default function Dashboard() {
         >
           <Toolbar />
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
-            <Grid container spacing={3}>
-              {/* Chart */}
-              <Grid item xs={12} md={8} lg={9}>
-                <Paper
-                  sx={{
-                    p: 2,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    height: 240,
-                  }}
-                >
-                  <Chart />
-                </Paper>
-              </Grid>
-              {/* Recent Deposits */}
-              <Grid item xs={12} md={4} lg={3}>
-                <Paper
-                  sx={{
-                    p: 2,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    height: 240,
-                  }}
-                >
-                  <Deposits />
-                </Paper>
-              </Grid>
-              {/* Recent Orders */}
-              <Grid item xs={12}>
-                <Paper sx={{ p: 2, display: 'flex', flexDirection: 'column' }}>
-                  <Orders />
-                </Paper>
-              </Grid>
-            </Grid>
+            {renderSelectedComponent()}
             <Copyright sx={{ pt: 4 }} />
           </Container>
         </Box>

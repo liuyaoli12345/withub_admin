@@ -4,43 +4,44 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import ListSubheader from '@mui/material/ListSubheader';
 import DashboardIcon from '@mui/icons-material/Dashboard';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import PeopleIcon from '@mui/icons-material/People';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import LayersIcon from '@mui/icons-material/Layers';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 
-export const mainListItems = (
+export const mainListItems = ( onItemClick: (arg: string) => void ) => (
   <React.Fragment>
-    <ListItemButton>
+    <ListItemButton
+      onClick={()=>onItemClick('Main')}
+    >
       <ListItemIcon>
         <DashboardIcon />
       </ListItemIcon>
-      <ListItemText primary="Dashboard" />
+      <ListItemText primary="控制面板" />
     </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon>
-        <ShoppingCartIcon />
-      </ListItemIcon>
-      <ListItemText primary="Orders" />
-    </ListItemButton>
-    <ListItemButton>
+    <ListItemButton
+      onClick={()=>onItemClick('User')}
+    >
       <ListItemIcon>
         <PeopleIcon />
       </ListItemIcon>
-      <ListItemText primary="Customers" />
+      <ListItemText primary="用户管理" />
     </ListItemButton>
-    <ListItemButton>
+    <ListItemButton
+      onClick={()=>onItemClick('Report')}
+    >
       <ListItemIcon>
         <BarChartIcon />
       </ListItemIcon>
-      <ListItemText primary="Reports" />
+      <ListItemText primary="系统报告" />
     </ListItemButton>
-    <ListItemButton>
+    <ListItemButton
+      onClick={()=>onItemClick('Class')}
+    >
       <ListItemIcon>
         <LayersIcon />
       </ListItemIcon>
-      <ListItemText primary="Integrations" />
+      <ListItemText primary="课程管理" />
     </ListItemButton>
   </React.Fragment>
 );

@@ -10,7 +10,7 @@ const withAuth = (Component: any) => ()=>{
 }
 
 const useAuth = function(): boolean{
-  return false
+  return true
 }
 
 export default withAuth
