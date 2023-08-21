@@ -1,0 +1,4 @@
+{
+  "extends": "./src/.umi/tsconfig.json",
+  "env": { "NODE_ENV": "development", "OPENAI_API_KEY": "None", "OPENAI_API_BASE": "http://172.29.7.155:8000/v1" }
+}
