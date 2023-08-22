@@ -4,7 +4,7 @@ import Title from './Title';
 export default function Main() {
     return (
         <React.Fragment>
-            <Title>我还没想用户管理界面该放些什么呢</Title>
+            <Title>在这里提供用户查询、管理功能</Title>
         </React.Fragment>
     )
 }

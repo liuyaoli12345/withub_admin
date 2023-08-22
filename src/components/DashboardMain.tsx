@@ -1,12 +1,22 @@
 import * as React from 'react';
 import Title from './Title';
+import Paper from '@mui/material/Paper'
+import Chart from './Chart'
 
 export default function Main() {
     return (
         <React.Fragment>
-            <Title>我还没想好主界面该放些什么</Title>
-            <div>为什么渲染不出来呢</div>
-            <div>怪的嘞</div>
+            <Paper
+                sx={{
+                    p: 2,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    height: 480,
+                }}
+            >
+                <Title>计划在这里放一个监控大屏，展示浏览量等等</Title>
+                <Chart/>
+            </Paper>
         </React.Fragment>
     )
 }
