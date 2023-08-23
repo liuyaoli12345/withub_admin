@@ -5,21 +5,13 @@ import Grid from '@mui/material/Grid';
 import classCard from './ClassCard'
 import { ClassItem } from '@/types'
 import { getClass } from '@/api/ClassInfo'
+import SearchBar from './SearchBar'
 
 export default function Main() {
     return (
         <React.Fragment>
-            <Title>课程管理界面可以提供管理课程和操作爬虫的入口</Title>
-            <Paper
-                sx={{
-                    p: 2,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    height: 100,
-                }}
-            >
-                <Title>爬虫操作入口</Title>
-            </Paper>
+            <Title>课程管理界面可以提供管理课程</Title>
+            <SearchBar/>
             <br></br>
             {classCards()}
         </React.Fragment>

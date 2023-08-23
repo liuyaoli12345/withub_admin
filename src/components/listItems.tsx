@@ -7,6 +7,7 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 import PeopleIcon from '@mui/icons-material/People';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import LayersIcon from '@mui/icons-material/Layers';
+import CatchingPokemonIcon from '@mui/icons-material/CatchingPokemon';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 
 export const mainListItems = ( onItemClick: (arg: string) => void ) => (
@@ -42,6 +43,14 @@ export const mainListItems = ( onItemClick: (arg: string) => void ) => (
         <LayersIcon />
       </ListItemIcon>
       <ListItemText primary="课程管理" />
+    </ListItemButton>
+    <ListItemButton
+      onClick={()=>onItemClick('Clawler')}
+    >
+      <ListItemIcon>
+        <CatchingPokemonIcon />
+      </ListItemIcon>
+      <ListItemText primary="爬虫中心" />
     </ListItemButton>
   </React.Fragment>
 );

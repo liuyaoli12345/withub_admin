@@ -18,12 +18,10 @@ import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import { mainListItems, secondaryListItems } from './listItems';
-import Chart from './Chart';
-import Deposits from './Deposits';
-import Orders from './Orders';
 import DashboardMain from './DashboardMain'
 import UserManage from './UserManage'
 import ClassManage from './ClassManage'
+import CrawlerCenter from './CrawlerCenter'
 import Report from './Reports'
 import 'recharts';
 
@@ -33,7 +31,7 @@ function Copyright(props: any) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
+      <Link color="inherit" href="https://blog.lsmcloud.top/">
         Withub admin dashboard
       </Link>{' '}
       {new Date().getFullYear()}
@@ -116,6 +114,8 @@ export default function Dashboard() {
         return <Report/>
       case 'Class':
         return <ClassManage/>
+      case 'Clawler':
+        return <CrawlerCenter/>;
       // 添加其他情况
       default:
         return null;

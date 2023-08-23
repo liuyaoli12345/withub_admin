@@ -12,13 +12,15 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import withAuth  from '@/hocs/auth' 
+import { useNavigate } from 'umi';
 
 function Copyright(props: any) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
+      <Link color="inherit" href="https://blog.lsmcloud.top/">
+        Withub admin dashboard
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -29,14 +31,19 @@ function Copyright(props: any) {
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
-export default function SignIn() {
+function SignIn() {
+  const navigate = useNavigate();
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    const localStorage = window.localStorage;
+    // console.log({
+    //   email: data.get('email'),
+    //   password: data.get('password'),
+    // });
+    localStorage.setItem("isLogin", "true")
+    navigate('/')
+    // console.log(localStorage.getItem("isLogin"))
   };
 
   return (
@@ -109,3 +116,5 @@ export default function SignIn() {
     </ThemeProvider>
   );
 }
+
+export default withAuth(SignIn)

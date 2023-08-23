@@ -10,7 +10,14 @@ const withAuth = (Component: any) => ()=>{
 }
 
 const useAuth = function(): boolean{
-  return true
+  const localStorage = window.localStorage;
+  const isLogin = localStorage.getItem("isLogin");
+  // console.log("进行判断")
+  if(isLogin==="true"){
+    return true
+  } else {
+    return false
+  }
 }
 
 export default withAuth
