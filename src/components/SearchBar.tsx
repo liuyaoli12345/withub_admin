@@ -7,11 +7,16 @@ import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import DirectionsIcon from '@mui/icons-material/Directions';
 
-export default function CustomizedInputBase() {
+interface CustomizedInputBaseProps {
+  sx?: React.CSSProperties;
+}
+
+export default function CustomizedInputBase(props: CustomizedInputBaseProps) {
+  const  {sx}  = props;
   return (
     <Paper
       component="form"
-      sx={{ p: '2px 4px', display: 'flex', alignItems: 'center' }}
+      sx={{ ...sx, p: '2px 4px', display: 'flex', alignItems: 'center',  }}
     >
       <IconButton sx={{ p: '10px' }} aria-label="menu">
         <MenuIcon />

@@ -29,4 +29,7 @@
   - 子组件ClassCard，是课程卡片，课程卡片应该还要提供一个详情页，还没有设计嘞
 - 爬虫操作中心
   - 在课程管理模块下，后面考虑单独设一个爬虫的目录
+
+## Problems
+- ScrollTop里面UseScrollTrigger总是不生效，目前是直接让Fade组件接收true来保证始终在显示
   

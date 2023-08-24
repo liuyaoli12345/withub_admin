@@ -6,12 +6,19 @@ import classCard from './ClassCard'
 import { ClassItem } from '@/types'
 import { getClass } from '@/api/ClassInfo'
 import SearchBar from './SearchBar'
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
 
 export default function Main() {
     return (
         <React.Fragment>
-            <Title>课程管理界面可以提供管理课程</Title>
-            <SearchBar/>
+            <Box sx={{ width: '100%' }}>
+                <Stack direction="row" spacing={2} sx={{width: '100%'}}>
+                    <SearchBar sx={{width: '85%'}} />
+                    <Button variant="contained" sx={{width: '15%'}} >手动添加课程</Button>
+                </Stack>
+            </Box>
             <br></br>
             {classCards()}
         </React.Fragment>

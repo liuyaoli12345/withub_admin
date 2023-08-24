@@ -4,11 +4,12 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import {ClassItem} from '@/types'
+import {UserItem} from '@/types'
+import Avatar from '@mui/material/Avatar';
 
-export default function ClassCard(classItem: ClassItem) {
+export default function ClassCard(userItem: UserItem) {
     // console.log(classItem)
-    const { id, name, teacher, time, rate, location } = classItem
+    const { id, name, avatar } = userItem
     return (
         <Card sx={{ 
             minWidth: 120,
@@ -16,22 +17,12 @@ export default function ClassCard(classItem: ClassItem) {
             flexDirection: 'column',
             }}>
             <CardContent>
+                <Avatar alt={name} src={avatar} />
                 <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
                     {id}
                 </Typography>
                 <Typography variant="h5" component="div">
-                    {name + "   " + "   " + rate}
-                </Typography>
-                <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                    {teacher}
-                </Typography>
-                <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                    {location}
-                </Typography>
-                <Typography variant="body2">
-                    {time.map((timeSlot, index) => (
-                        timeSlot + (index === time.length - 1 ? '' : ',')
-                    ))}
+                    {name}
                 </Typography>
             </CardContent>
             <CardActions>

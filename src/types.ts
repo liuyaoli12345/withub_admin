@@ -7,3 +7,9 @@ export type ClassItem = {
     location: string;
     // ... other properties
   };
+
+export type UserItem = {
+    id: string;
+    name: string;
+    avatar: string;
+}

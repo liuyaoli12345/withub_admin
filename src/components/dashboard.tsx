@@ -23,6 +23,10 @@ import UserManage from './UserManage'
 import ClassManage from './ClassManage'
 import CrawlerCenter from './CrawlerCenter'
 import Report from './Reports'
+import ScrollTop from './ScrollTop'
+import Fab from '@mui/material/Fab';
+import useScrollTrigger from '@mui/material/useScrollTrigger';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import 'recharts';
 
 
@@ -104,23 +108,33 @@ export default function Dashboard() {
     setSelectedItem(item)
     console.log(item)
   }
+  const trigger = useScrollTrigger({
+    target: window ? window : undefined,
+    disableHysteresis: true,
+    threshold: 100,
+  });
   const renderSelectedComponent = () => {
     switch (selectedItem) {
       case 'Main':
-        return <DashboardMain/>;
+        return <DashboardMain />;
       case 'User':
-        return <UserManage/>;
+        return <UserManage />;
       case 'Report':
-        return <Report/>
+        return <Report />
       case 'Class':
-        return <ClassManage/>
+        return <ClassManage />
       case 'Clawler':
-        return <CrawlerCenter/>;
+        return <CrawlerCenter />;
       // 添加其他情况
       default:
         return null;
     }
   };
+  const backToTopId = 'back-to-top-anchor'
+  const props = {
+    anchorTag: backToTopId,
+    trigger: trigger,
+  }
 
   return (
     <ThemeProvider theme={defaultTheme}>
@@ -192,12 +206,19 @@ export default function Dashboard() {
             overflow: 'auto',
           }}
         >
-          <Toolbar />
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+            <Toolbar id={backToTopId} />
             {renderSelectedComponent()}
             <Copyright sx={{ pt: 4 }} />
           </Container>
         </Box>
+      </Box>
+      <Box>
+        <ScrollTop {...props}>
+          <Fab size="small" aria-label="scroll back to top">
+            <KeyboardArrowUpIcon />
+          </Fab>
+        </ScrollTop>
       </Box>
     </ThemeProvider>
   );
